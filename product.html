@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Products</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<style>
+
+		body{
+			box-sizing: border-box;
+			margin: 10px;
+			background-image: url('https://i.pinimg.com/originals/e2/71/fd/e271fda72f1e158b5f0569cc72d36d7f.jpg');
+			color: blue;
+			text-align: center;
+		}
+		.each-product{
+			border : 1px solid black;
+			padding: 10px;
+
+		}
+
+		h1{
+			color: purple;
+			text-align: center;
+		}
+
+	</style>
+	<script>
+
+		function show_products(id){
+
+
+			if (id === 'books'){
+				const book_array = [['https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/10/17/12/jhjka.jpg', 'The Hobbit'], ['https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gone_with_the_Wind_cover.jpg/220px-Gone_with_the_Wind_cover.jpg', 'Gone with the Wind'], ['https://media.npr.org/assets/bakertaylor/covers/t/the-book-thief/9780375842207_custom-3be6aba13d9125e812ee424256983b69698244dc-s300-c85.jpg', 'The Book Thief'], ['https://www.shortlist.com/media/images/2019/05/13-famous-books-that-had-very-different-working-titles-8-1556673035-2MGh-column-width-inline.jpg', 'To Kill a Mockingbird']]
+
+
+
+				book_array.forEach(array => {
+					const element = document.createElement('div')
+					element.setAttribute('class', 'each-product col-md-4 col-sm-12 text-center')
+					element.innerHTML = 
+					`
+					<div class="col-md-12">
+					<img src="${array[0]}" width="100%">
+					<hr>
+					<h5>${array[1]}</h5>
+					</div>
+					`
+
+					document.querySelector('#books-view').append(element)
+
+				})
+			}else if(id==='computers'){
+				const computer_array = [
+				['https://techcrunch.com/wp-content/uploads/2020/05/00100trPORTRAIT_00100_BURST20200506153653558_COVER.jpg', 'Macbook Pro'], 
+				['https://cdn0.centrecom.com.au/images/upload/0078188_0.jpeg', 'Lenovo ThinkPad'],
+				['https://i.gadgets360cdn.com/products/large/1552986127_635_Dell_db.jpg', 'Dell Inspiration'], 
+				['https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06542264.png', 'HP Desktop']]
+
+
+
+				computer_array.forEach(array => {
+					const element = document.createElement('div')
+					element.setAttribute('class', ' each-product col-md-4 col-sm-12 text-center')
+					element.innerHTML = 
+					`
+					<div class=" col-md-12">
+					<img src="${array[0]}" width="100%">
+					<hr>
+					<h5>${array[1]}</h5>
+					</div>
+					`
+
+					document.querySelector('#computers-view').append(element)
+				})				
+			}else{
+				const mobiles_array = [
+				['https://images-na.ssl-images-amazon.com/images/I/61itOh%2BJe8L._SX466_.jpg', 'Iphone 11 Pro'], 
+				['https://images-na.ssl-images-amazon.com/images/I/71QIWoR7EZL._SX522_.jpg', 'Samsung Galaxy Note 10'],
+				['https://www.gizmochina.com/wp-content/uploads/2020/03/OnePlus-8-1.jpg', 'OnePlus 8T 5G']]
+
+
+
+				mobiles_array.forEach(array => {
+					const element = document.createElement('div')
+					element.setAttribute('class', ' each-product col-md-4 col-sm-12 text-center')
+					element.innerHTML = 
+					`
+					<div class="ecol-md-12" width='${window.innerWidth/4}'>
+					<img src="${array[0]}" width="100%">
+					<hr>
+					<h5>${array[1]}</h5>
+					</div>
+					`
+
+					document.querySelector('#mobiles-view').append(element)
+			})
+
+		}
+
+	}
+		document.addEventListener('DOMContentLoaded', () => {
+
+			document.querySelectorAll('button').forEach(button => {
+				button.onclick = function(){
+
+
+			document.querySelector('#books-view').innerHTML ='';
+			document.querySelector('#computers-view').innerHTML ='';
+			document.querySelector('#mobiles-view').innerHTML ='';
+
+					id = this.id
+					show_products(id)
+				}
+			})
+
+			document.getElementById('books').click()
+
+		})
+		
+	</script>
+</head>
+<body>
+	<h1>Products</h1>
+
+	<div id="category_choice">
+		<ul>
+			<button class="btn btn-primary" id="books">Books</button>
+			<button class="btn btn-primary" id="computers">Computers</button>
+			<button class="btn btn-primary" id="mobiles">Mobiles</button>
+		</ul>
+	</div>
+
+	<div class="container">
+		
+	<div id="books-view" class="row">
+	</div>
+	<div id="computers-view" class="row">
+	</div>
+	<div id="mobiles-view" class="row">
+	</div>
+	</div>
+
+</body>
+</html>
